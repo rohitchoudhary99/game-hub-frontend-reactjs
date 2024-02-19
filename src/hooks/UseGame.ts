@@ -24,12 +24,20 @@ interface gamesResponse {
 export const UseGame = () => {
     const [games, setGames] = useState<gameResult[]>([])
     const [error, setError] = useState('')
+    const [isLoading, setLoading] =useState(false)
 
     useEffect(() => {
+        setLoading(true)
         apiClient.get<gamesResponse>('/games')
-            .then((response) => setGames(response.data.results))
-            .catch((err) => setError(err.message))
+            .then((response) =>{
+                setGames(response.data.results)
+                setLoading(false)
+            })
+            .catch((err) => {
+                setError(err.message)
+                setLoading(false)
+            })
     }, [])
 
-    return { games, error }
+    return { games, error, isLoading }
 }
