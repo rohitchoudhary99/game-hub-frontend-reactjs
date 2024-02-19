@@ -1,13 +1,23 @@
-import { Box, Image } from '@chakra-ui/react'
+import { Box, Grid, GridItem, Image, Show } from '@chakra-ui/react'
+import { Navbar } from './components/Navbar'
 
 
 function App() {
 
   return (
     <>
-      <Box boxSize='sm'>
-        <Image borderRadius='full' src='https://bit.ly/dan-abramov' alt='Dan Abramov' />
-      </Box>
+     <Grid templateAreas={{
+      base:`'nav' ' main'`,
+      lg :`'nav nav''aside main'`
+     }}>
+       <GridItem area={'nav'}>
+          <Navbar></Navbar>
+       </GridItem>
+       <Show above='lg'>
+       <GridItem area={'aside'} bg={'green'}>aside</GridItem>
+       </Show>
+       <GridItem area={'main'} bg={'dodgerblue'}>main</GridItem>
+     </Grid>
     </>
   )
 }
