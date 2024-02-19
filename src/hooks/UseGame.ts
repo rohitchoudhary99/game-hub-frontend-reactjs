@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import apiClient from "../services/api-client"
 
-interface gameResult {
+export interface gameResult {
     id : number,
     name : string,
     background_image : string,
