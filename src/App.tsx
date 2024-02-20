@@ -26,7 +26,7 @@ function App() {
         {/* aside */}
         <Show above='lg'>
           <GridItem area={'aside'} paddingX='18px'>
-            <GenresList onSelectCategory={SetCategory}></GenresList>
+            <GenresList onSelectCategory={SetCategory} selectedCategory={selectedCategory}></GenresList>
           </GridItem>
         </Show>
 

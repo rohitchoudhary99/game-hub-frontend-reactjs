@@ -5,8 +5,9 @@ import { UseGenres, genres } from '../hooks/UseGenres'
 
 interface props {
     onSelectCategory: (genre: genres) => void
+    selectedCategory : genres | null
 }
-export const GenresList = ({ onSelectCategory }: props) => {
+export const GenresList = ({ onSelectCategory,selectedCategory }: props) => {
     const { data, isLoading, error } = UseGenres()
 
     return (
@@ -17,7 +18,7 @@ export const GenresList = ({ onSelectCategory }: props) => {
                     data.map((genre) => <ListItem paddingY='10px'>
                         <HStack>
                             <Image boxSize='32px' src={getCroppedImageUrl(genre.image_background)} />
-                            <Button onClick={() => onSelectCategory(genre)}>{genre.name}</Button>
+                            <Button fontWeight={selectedCategory?.id == genre.id ? 'bold' :'' } onClick={() => onSelectCategory(genre)}>{genre.name}</Button>
                         </HStack>
                     </ListItem>)
                 }
