@@ -4,6 +4,7 @@ import { GameCard } from './gameCard/GameCard'
 import { GameCardSkeketon } from './gameCard/GameCardSkeketon'
 import { GameCardContainer } from './gameCard/GameCardContainer'
 import { genres } from '../hooks/UseGenres'
+import { PlateformSelector } from './plateformSelector/PlateformSelector'
 
 interface props {
     currentSelectedCategory: genres | null
@@ -14,6 +15,7 @@ export const GameGrid = ({ currentSelectedCategory }: props) => {
 
     return (
         <>
+            <PlateformSelector></PlateformSelector>
             <SimpleGrid columns={{ sm: 1, md: 2., lg: 3, xl: 5 }} spacing={10} padding={10} alignItems='stretch'>
                 {isLoading && skeleton.map((ele) => <GameCardContainer><GameCardSkeketon /></GameCardContainer>)}
                 {
