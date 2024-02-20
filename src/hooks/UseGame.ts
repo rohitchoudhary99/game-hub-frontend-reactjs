@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import apiClient from "../services/api-client"
 import UseData from "./UseData"
+import { genres } from "./UseGenres"
 
 export interface platformInterfcae {
     id: number,
@@ -17,9 +18,5 @@ export interface gameResult {
     metacritic: number
 }
 
-interface gamesResponse {
-    count: number,
-    results: gameResult[]
-}
 
-export const UseGame = () => UseData<gameResult>('/games')
+export const UseGame = (selectedCategory: genres | null) => UseData<gameResult>('/games', { params: { genres: selectedCategory?.id } }, [selectedCategory?.id])
