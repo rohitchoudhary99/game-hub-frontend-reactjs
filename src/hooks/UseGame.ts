@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import apiClient from "../services/api-client"
+import UseData from "./UseData"
 
 export interface platformInterfcae {
     id: number,
@@ -21,23 +22,4 @@ interface gamesResponse {
     results: gameResult[]
 }
 
-export const UseGame = () => {
-    const [games, setGames] = useState<gameResult[]>([])
-    const [error, setError] = useState('')
-    const [isLoading, setLoading] =useState(false)
-
-    useEffect(() => {
-        setLoading(true)
-        apiClient.get<gamesResponse>('/games')
-            .then((response) =>{
-                setGames(response.data.results)
-                setLoading(false)
-            })
-            .catch((err) => {
-                setError(err.message)
-                setLoading(false)
-            })
-    }, [])
-
-    return { games, error, isLoading }
-}
+export const UseGame = () => UseData<gameResult>('/games')
