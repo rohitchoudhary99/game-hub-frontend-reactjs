@@ -1,7 +1,7 @@
 import apiClient from "../services/api-client";
 import UseData from "./UseData";
 
-interface fetchPlatformResponse {
+export interface fetchPlatformResponse {
     id: number,
     name: string,
     slug: string
