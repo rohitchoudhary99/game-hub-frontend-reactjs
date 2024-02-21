@@ -4,9 +4,10 @@ import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
 
 interface props {
     onSelectSortOrder: (sort: string) => void
+    sortOrder: string
 }
 
-export const SortSelector = ({ onSelectSortOrder }: props) => {
+export const SortSelector = ({ onSelectSortOrder, sortOrder }: props) => {
     const sortOrders = [
         { value: '', label: 'Relevance' },
         { value: '-added', label: 'Date added' },
@@ -15,14 +16,14 @@ export const SortSelector = ({ onSelectSortOrder }: props) => {
         { value: '-metacritic', label: 'Popularity' },
         { value: '-rating', label: 'Average rating' }
     ]
+
+    const currentSortOrder = sortOrders.find((item) => item.value === sortOrder);
+
     return (
         <>
             <Menu>
                 <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-                    {
-                        // selectedPlatform?.name || 'Plateform'
-                        'Order by: Relevance'
-                    }
+                    Order by: {currentSortOrder?.label || 'Relevance'}
                 </MenuButton>
                 <MenuList>
                     {
