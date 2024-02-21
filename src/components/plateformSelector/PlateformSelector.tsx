@@ -1,10 +1,10 @@
 import { ChevronDownIcon } from "@chakra-ui/icons"
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react"
-import { UsePlateform, fetchPlatformResponse } from "../../hooks/UsePlateform"
+import { UsePlateform, platform } from "../../hooks/UsePlateform"
 
 interface paltformProps {
-    onSelectPlatform : (paltform: fetchPlatformResponse) => void,
-    selectedPlatform : fetchPlatformResponse | null
+    onSelectPlatform : (paltform: platform) => void,
+    selectedPlatform : platform | null
 }
 export const PlateformSelector = ({onSelectPlatform ,selectedPlatform} : paltformProps) => {
     const { data, isLoading, error } = UsePlateform()
