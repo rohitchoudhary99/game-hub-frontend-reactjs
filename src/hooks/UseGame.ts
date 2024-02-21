@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react"
-import apiClient from "../services/api-client"
+import { gameQuery } from "../App"
 import UseData from "./UseData"
 import { genres } from "./UseGenres"
-import { fetchPlatformResponse } from "./UsePlateform"
+import { platform } from "./UsePlateform"
 
 export interface platformInterfcae {
     id: number,
@@ -10,7 +9,7 @@ export interface platformInterfcae {
     slug: string
 }
 
-export interface gameResult {
+export interface game {
     id: number,
     name: string,
     background_image: string,
@@ -20,12 +19,12 @@ export interface gameResult {
 }
 
 
-export const UseGame = (selectedCategory: genres | null, selectedPlateform: fetchPlatformResponse | null) =>
-    UseData<gameResult>('/games',
+export const UseGame = (gameQuery:gameQuery | null) =>
+    UseData<game>('/games',
         {
             params: {
-                genres: selectedCategory?.id,
-                platform: selectedPlateform?.id
+                genres: gameQuery?.genre?.id,
+                platform: gameQuery?.platform?.id
             }
         },
-        [selectedCategory?.id, selectedPlateform?.id])
+        [gameQuery?.genre?.id, gameQuery?.platform?.id])
