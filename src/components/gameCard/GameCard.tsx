@@ -12,7 +12,7 @@ interface gameCardProps {
 export const GameCard = ({game}:gameCardProps) => {
   return (
    <>
-   <Card>
+   <Card key={game.id}>
         <Image src={getCroppedImageUrl(game.background_image)}/>
         <CardBody>
             <HStack justifyContent='space-between' paddingTop='10px'>
