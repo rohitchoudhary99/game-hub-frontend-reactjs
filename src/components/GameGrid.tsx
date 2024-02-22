@@ -16,7 +16,7 @@ export const GameGrid = ({ gameQuery }: props) => {
     return (
         <>
             <SimpleGrid columns={{ sm: 1, md: 2., lg: 3, xl: 5 }} spacing={10} paddingTop='34px' alignItems='stretch'>
-                {isLoading && skeleton.map((ele) => <GameCardContainer><GameCardSkeketon /></GameCardContainer>)}
+                {isLoading && skeleton.map((ele) => <GameCardContainer><GameCardSkeketon id= {ele}/></GameCardContainer>)}
                 {
                     data.map((item) => (
 

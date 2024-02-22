@@ -15,7 +15,7 @@ export const GenresList = ({ onSelectCategory,selectedCategory }: props) => {
             {isLoading && (<Skeleton><SkeletonText></SkeletonText></Skeleton>)}
             <List>
                 {
-                    data.map((genre) => <ListItem paddingY='10px'>
+                    data.map((genre) => <ListItem key={genre.id} paddingY='10px'>
                         <HStack>
                             <Image boxSize='32px' src={getCroppedImageUrl(genre.image_background)} />
                             <Button fontWeight={selectedCategory?.id == genre.id ? 'bold' :'' } onClick={() => onSelectCategory(genre)}>{genre.name}</Button>
